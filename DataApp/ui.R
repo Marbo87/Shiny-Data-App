@@ -13,16 +13,27 @@ library(shiny)
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Fuel consumption of cars from 2011 or 2012"),
 
-    # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
+            h2("Model Selection"),
+            # Radiobutton to choose the year
+            radioButtons("year", "Year:",
+                         c("2011" = "y11",
+                           "2012" = "y12")),
+            # Radiobutton to choose a model
+            radioButtons("mod", "Model:",
+                         c("Linear" = "lm",
+                           "Quadratic" = "qm")),
+            # Slider to choose an x-value to plot as a point
+            sliderInput("xval",
+                        "x-value of point to plot (blue):",
                         min = 1,
-                        max = 50,
-                        value = 30)
+                        max = 8,
+                        value = 4),
+            h3("y-value of chosen data"),
+            textOutput("pty")
         ),
 
         # Show a plot of the generated distribution
