@@ -11,10 +11,12 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
-
     # Application title
     titlePanel("Fuel consumption of cars from 2011 or 2012"),
-
+    "The plot shows fuel efficiency in miles per gallon in dependence on engine displacement.",
+    "Besides the actual data, two regression lines are plotted: a linear model and a quadratic model.",
+    "The user can chose: a) from which year the data should be, b) to plot a point for the linear or the quadratic model and c) the x-value of the point to plot.",
+    "The output is furthermore the y-value of the blue plotted point.",
     sidebarLayout(
         sidebarPanel(
             h2("Model Selection"),
@@ -32,7 +34,7 @@ shinyUI(fluidPage(
                         min = 1,
                         max = 8,
                         value = 4),
-            h3("y-value of chosen data"),
+            h3("y-value of chosen point:"),
             textOutput("pty")
         ),
 
